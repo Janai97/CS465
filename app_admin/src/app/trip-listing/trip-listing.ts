@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Trip } from '../models/trip';
 import { TripData } from '../services/trip-data';
 import { TripCardComponent } from '../trip-card/trip-card';
+import { AuthenticationService } from '../services/authentication';
 
 @Component({
   selector: 'app-trip-listing',
@@ -21,9 +22,14 @@ export class TripListingComponent implements OnInit {
   constructor(
     private tripDataService: TripData,
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private authenticationService: AuthenticationService
   ) {
     console.log('trip-listing constructor');
+  }
+
+  public isLoggedIn(): boolean {
+    return this.authenticationService.isLoggedIn();
   }
 
   public addTrip(): void {
@@ -42,8 +48,6 @@ export class TripListingComponent implements OnInit {
         }
 
         console.log(this.message);
-
-        // Force Angular to refresh the view right after the async call returns
         this.cdr.detectChanges();
       },
       error: (error: any) => {

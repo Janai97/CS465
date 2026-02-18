@@ -10,11 +10,10 @@
         type="text"
         formControlName="code"
         class="form-control"
-        readonly
         [ngClass]="{ 'is-invalid': submitted && f['code'].errors }"
       >
       <div *ngIf="submitted && f['code'].errors">
-        <div *ngIf="f['code'].errors?.['required']">Trip Code is required</div>
+        <div *ngIf="f['code'].errors['required']">Trip Code is required</div>
       </div>
     </div>
 
@@ -24,12 +23,11 @@
       <input
         type="text"
         formControlName="name"
-        placeholder="Name"
         class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
       >
       <div *ngIf="submitted && f['name'].errors">
-        <div *ngIf="f['name'].errors?.['required']">Name is required</div>
+        <div *ngIf="f['name'].errors['required']">Name is required</div>
       </div>
     </div>
 
@@ -39,12 +37,11 @@
       <input
         type="text"
         formControlName="length"
-        placeholder="Length"
         class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f['length'].errors }"
       >
       <div *ngIf="submitted && f['length'].errors">
-        <div *ngIf="f['length'].errors?.['required']">Length is required</div>
+        <div *ngIf="f['length'].errors['required']">Length is required</div>
       </div>
     </div>
 
@@ -58,7 +55,7 @@
         [ngClass]="{ 'is-invalid': submitted && f['start'].errors }"
       >
       <div *ngIf="submitted && f['start'].errors">
-        <div *ngIf="f['start'].errors?.['required']">Date is required</div>
+        <div *ngIf="f['start'].errors['required']">Date is required</div>
       </div>
     </div>
 
@@ -68,12 +65,11 @@
       <input
         type="text"
         formControlName="resort"
-        placeholder="Resort"
         class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f['resort'].errors }"
       >
       <div *ngIf="submitted && f['resort'].errors">
-        <div *ngIf="f['resort'].errors?.['required']">Resort is required</div>
+        <div *ngIf="f['resort'].errors['required']">Resort is required</div>
       </div>
     </div>
 
@@ -83,12 +79,11 @@
       <input
         type="text"
         formControlName="perPerson"
-        placeholder="Per Person"
         class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f['perPerson'].errors }"
       >
       <div *ngIf="submitted && f['perPerson'].errors">
-        <div *ngIf="f['perPerson'].errors?.['required']">Per Person is required</div>
+        <div *ngIf="f['perPerson'].errors['required']">Per Person is required</div>
       </div>
     </div>
 
@@ -98,12 +93,11 @@
       <input
         type="text"
         formControlName="image"
-        placeholder="Image"
         class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f['image'].errors }"
       >
       <div *ngIf="submitted && f['image'].errors">
-        <div *ngIf="f['image'].errors?.['required']">Image Name is required</div>
+        <div *ngIf="f['image'].errors['required']">Image Name is required</div>
       </div>
     </div>
 
@@ -113,12 +107,11 @@
       <input
         type="text"
         formControlName="description"
-        placeholder="Description"
         class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
       >
       <div *ngIf="submitted && f['description'].errors">
-        <div *ngIf="f['description'].errors?.['required']">Description is required</div>
+        <div *ngIf="f['description'].errors['required']">Description is required</div>
       </div>
     </div>
 
