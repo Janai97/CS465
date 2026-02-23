@@ -1,0 +1,63 @@
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 220px;          /* 🔥 Force uniform height */
+  object-fit: cover;      /* 🔥 Crop nicely without stretching */
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-text {
+  flex-grow: 1;
+}
+/* ===== ACTION BUTTONS TOP RIGHT ===== */
+.card-actions {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+/* Edit Button */
+.edit-btn {
+  background: #1e66d0;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background: #1557b5;
+}
+
+/* Delete X Button */
+.delete-btn {
+  background: white;
+  color: #d11a2a;
+  border: 1px solid #d11a2a;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #d11a2a;
+  color: white;
+}

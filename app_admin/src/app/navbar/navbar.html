@@ -1,24 +1,27 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
-<a class="navbar-brand" href="#"><img
-src="/assets/images/logo.png"></a>
-<button class="navbar-toggler" type="button" data-toggle="collapse"
-data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-<div class="navbar-nav">
-<a class="nav-link active" routerLink="">Trips<span class="
-sr-only ">(current)</span></a>
-</div>
-</div>
-<div class="navbar-end ">
-<a class="nav-item" routerLink="login" *ngIf="!isLoggedIn()">
-<span class="has-icon-left">Log In</span>
-</a>
-<a class="nav-item active" (click)="onLogout()"
-*ngIf="isLoggedIn()">
-<span class="has-icon-left ">Log Out</span>
-</a>
-</div>
+<nav class="tg-nav">
+  <div class="tg-left">
+    <a routerLink="/" class="logo-link">
+      <img class="corp-logo" src="/assets/images/logo.png" alt="Travlr Getaways" />
+    </a>
+
+    <a routerLink="/travel" class="nav-btn">Travel</a>
+    <a routerLink="/news" class="nav-btn">News</a>
+    <a routerLink="/checkout" class="nav-btn">Checkout</a>
+
+    <!-- Admin now just requires login -->
+    <a *ngIf="isLoggedIn()" routerLink="/admin" class="nav-btn">Admin</a>
+  </div>
+
+  <div class="tg-right">
+    <a *ngIf="!isLoggedIn()" routerLink="/login" class="nav-btn">Login</a>
+    <a *ngIf="!isLoggedIn()" routerLink="/register" class="nav-btn primary">
+      Sign Up
+    </a>
+
+    <button *ngIf="isLoggedIn()" (click)="logout()" class="nav-btn">
+      Logout
+    </button>
+  </div>
 </nav>
+
+<router-outlet></router-outlet>

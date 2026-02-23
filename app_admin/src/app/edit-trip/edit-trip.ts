@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { TripData } from '../services/trip-data';
@@ -19,6 +24,8 @@ export class EditTrip implements OnInit {
   submitted = false;
   message: string = '';
 
+  private originalTripCode: string = '';
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -26,7 +33,6 @@ export class EditTrip implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Retrieve stashed trip code
     const tripCode = localStorage.getItem('tripCode');
 
     if (!tripCode) {
@@ -35,13 +41,11 @@ export class EditTrip implements OnInit {
       return;
     }
 
-    console.log('EditTrip::ngOnInit');
-    console.log('tripCode: ' + tripCode);
+    this.originalTripCode = tripCode;
 
-    // Build form first (code is pre-filled)
     this.editForm = this.formBuilder.group({
       _id: [],
-      code: [tripCode, Validators.required],
+      code: [{ value: tripCode, disabled: true }, Validators.required],
       name: ['', Validators.required],
       length: ['', Validators.required],
       start: ['', Validators.required],
@@ -51,19 +55,24 @@ export class EditTrip implements OnInit {
       description: ['', Validators.required],
     });
 
-    // Load trip from API and populate form
     this.tripService.getTrip(tripCode).subscribe({
       next: (value: Trip) => {
         this.trip = value;
 
-        // fill the form with existing values
-        this.editForm.patchValue(value);
+        // IMPORTANT: format start date for <input type="date">
+        const startValue = value.start ? String(value.start).slice(0, 10) : '';
+
+        this.editForm.patchValue({
+          ...value,
+          start: startValue,
+        });
 
         this.message = 'Trip: ' + tripCode + ' retrieved';
         console.log(this.message);
       },
       error: (error: any) => {
         console.log('Error: ' + error);
+        this.message = 'Error retrieving trip from database';
       },
     });
   }
@@ -71,17 +80,25 @@ export class EditTrip implements OnInit {
   public onSubmit(): void {
     this.submitted = true;
 
-    if (this.editForm.valid) {
-      this.tripService.updateTrip(this.editForm.value).subscribe({
-        next: (data: any) => {
-          console.log(data);
-          this.router.navigate(['']);
-        },
-        error: (error: any) => {
-          console.log('Error: ' + error);
-        },
-      });
-    }
+    if (this.editForm.invalid) return;
+
+    const formData = this.editForm.getRawValue() as Trip;
+
+    // ensure we update the ORIGINAL code
+    formData.code = this.originalTripCode;
+
+    // ensure correct type
+    (formData as any).perPerson = Number((formData as any).perPerson);
+
+    this.tripService.updateTrip(formData).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.router.navigate(['']);
+      },
+      error: (error: any) => {
+        console.log('Error: ' + error);
+      },
+    });
   }
 
   get f() {

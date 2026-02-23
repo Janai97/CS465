@@ -1,25 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { AuthenticationService } from '../services/authentication';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { Authentication } from '../services/authentication';
 
 @Component({
-selector: 'app-navbar',
-standalone: true,
-imports: [CommonModule, RouterModule],
-templateUrl: './navbar.html',
-styleUrl: './navbar.css',
+  selector: 'app-navbar',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: './navbar.html',
+  styleUrls: ['./navbar.css'],
 })
-export class NavbarComponent implements OnInit {
-constructor(
-private authenticationService: AuthenticationService
-) { }
-ngOnInit() { }
-public isLoggedIn(): boolean {
-return this.authenticationService.isLoggedIn();
-}
-public onLogout(): void {
-return this.authenticationService.logout();
-}
+export class NavbarComponent {
+  constructor(private auth: Authentication, private router: Router) {}
+
+  isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }
+
+  isAdmin(): boolean {
+    return false;
+  }
+
+  logout(): void {
+    this.auth.logout();
+    this.router.navigate(['']);
+  }
 }

@@ -1,0 +1,153 @@
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.subhead-row {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.back-link {
+  cursor: pointer;
+  color: #0d6efd;
+  text-decoration: underline;
+  font-size: 0.95rem;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.tab {
+  border: 1px solid #aaa;
+  background: #f6f6f6;
+  padding: 6px 12px;
+  border-radius: 4px 4px 0 0;
+}
+
+.tab.active {
+  background: #e9e9e9;
+  font-weight: 700;
+  border-color: #777;
+}
+
+.right-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #bbb;
+  padding: 6px 10px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.search-icon {
+  opacity: 0.75;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  width: 240px;
+}
+
+.clear-btn {
+  border: 1px solid #bbb;
+  background: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-btn {
+  border: 1px solid #222;
+  background: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.trip-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.trip-table thead th {
+  background: #d7d7d7;
+  padding: 8px;
+  text-align: left;
+  font-weight: 700;
+}
+
+.trip-table tbody td {
+  padding: 8px;
+  border-top: 1px solid #eee;
+}
+
+.trip-table tbody tr:nth-child(even) td {
+  background: #f3f3f3;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.actions {
+  text-align: right;
+}
+
+.actions a {
+  cursor: pointer;
+  color: #0d6efd;
+  text-decoration: underline;
+}
+
+.x-btn {
+  border: none;
+  background: #0d6efd;
+  color: #fff;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.empty {
+  text-align: center;
+  color: #777;
+  padding: 18px;
+}
+
+.pager {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18px;
+  margin-top: 8px;
+  color: #777;
+}
+
+.pager a {
+  cursor: pointer;
+  text-decoration: underline;
+}

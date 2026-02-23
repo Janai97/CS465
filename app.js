@@ -11,6 +11,7 @@ var apiRouter = require('./app_api/routes/index');
 
 var handlebars = require('hbs');
 var passport = require('passport');
+const jwt = require('jsonwebtoken');
 
 // Bring in the database
 require('./app_api/models/db');
@@ -38,17 +39,59 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 
-// Enable CORS
+/* JWT DECODE */
+app.use((req, res, next) => {
+  let token = null;
+
+  // 1) Try Authorization header
+  const authHeader = req.headers['authorization'];
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    token = authHeader.split(' ')[1];
+  }
+
+  // 2) Try cookie (optional, helpful for browser navigation)
+  if (!token && req.cookies && req.cookies['travlr-token']) {
+    token = req.cookies['travlr-token'];
+  }
+
+  if (token) {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+      if (!err && decoded) {
+        req.auth = decoded;
+        res.locals.user = decoded;
+      } else {
+        req.auth = null;
+        res.locals.user = null;
+      }
+      next();
+    });
+  } else {
+    req.auth = null;
+    res.locals.user = null;
+    next();
+  }
+});
+
+/* FIXED CORS FOR ANGULAR (4200) */
 app.use('/api', (req, res, next) => {
+  // MUST match your Angular origin exactly
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+
+  // Allow these headers (Authorization is required for JWT)
   res.header(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   );
+
+  // Allow these methods
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 
+  // Some setups also require this for preflight caching
+  res.header('Access-Control-Max-Age', '86400');
+
+  // Handle preflight requests
   if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
+    return res.sendStatus(204);
   }
 
   next();

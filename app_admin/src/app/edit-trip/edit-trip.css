@@ -1,0 +1,97 @@
+.trip-page {
+  display: flex;
+  justify-content: center;
+  padding: 26px 0;
+}
+
+.panel {
+  width: min(720px, 100%);
+  background: #fff;
+  border: 2px solid #222;
+  padding: 26px 26px 22px;
+  position: relative;
+}
+
+.panel-legend {
+  position: absolute;
+  top: -12px;
+  left: 18px;
+  background: #fff;
+  padding: 0 10px;
+  font-weight: 800;
+}
+
+.form-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.lbl {
+  font-weight: 700;
+  text-align: right;
+}
+
+.ctrl {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input {
+  border: 2px solid #222;
+  height: 34px;
+  padding: 6px 8px;
+  width: 360px;
+  max-width: 100%;
+  background: #fff;
+}
+
+.input.wide {
+  width: 420px;
+}
+
+.input.small {
+  width: 120px;
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.calendar {
+  font-size: 1.3rem;
+}
+
+.err {
+  color: #b00020;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.invalid {
+  border-color: #b00020;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.save-btn {
+  border: 2px solid #222;
+  background: #fff;
+  padding: 10px 22px;
+  font-weight: 800;
+  cursor: pointer;
+}

@@ -1,0 +1,47 @@
+{{> header}}
+
+<div class="container py-4">
+  <h1>Checkout</h1>
+
+  {{#if cart.length}}
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Trip</th>
+          <th class="text-center">Qty</th>
+          <th class="text-end">Per Person</th>
+          <th class="text-end"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each cart}}
+          <tr>
+            <td>{{this.code}}</td>
+            <td>{{this.name}}</td>
+            <td class="text-center">{{this.qty}}</td>
+            <td class="text-end">${{this.perPerson}}</td>
+            <td class="text-end">
+              <form method="post" action="/checkout/remove" class="d-inline">
+                <input type="hidden" name="code" value="{{this.code}}">
+                <button class="btn btn-sm btn-danger" type="submit">Remove</button>
+              </form>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="fs-5"><strong>Total:</strong> ${{total}}</div>
+      <form method="post" action="/checkout/clear">
+        <button class="btn btn-outline-secondary" type="submit">Clear Cart</button>
+      </form>
+    </div>
+  {{else}}
+    <div class="alert alert-info mt-3">Your cart is empty.</div>
+    <a class="btn btn-primary" href="/travel">Go to Travel</a>
+  {{/if}}
+</div>
+
+{{> footer}}

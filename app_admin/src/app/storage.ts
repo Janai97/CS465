@@ -6,4 +6,3 @@ export const BROWSER_STORAGE = new InjectionToken<Storage>('Browser Storage', {
 });
 
 export class Storage {}
-

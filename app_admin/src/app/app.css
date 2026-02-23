@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+
+/* Prevent any accidental “grey overlay” layer from blocking clicks */
+.overlay,
+.modal-backdrop,
+.screen-dim,
+.page-overlay,
+.dark-overlay {
+  display: none !important;
+}

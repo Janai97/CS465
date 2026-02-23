@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+  <div class="col-12 col-md-7 col-lg-5">
+    <h2 class="text-center mb-3">Sign Up</h2>
+
+    <form (ngSubmit)="onRegisterSubmit()">
+      <div *ngIf="formError" class="alert alert-danger">
+        {{ formError }}
+      </div>
+
+      <div class="form-group mb-2">
+        <label>Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          placeholder="Enter name"
+          required
+        />
+      </div>
+
+      <div class="form-group mb-2">
+        <label>Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          placeholder="Enter email"
+          required
+        />
+      </div>
+
+      <div class="form-group mb-2">
+        <label>Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          placeholder="Enter password"
+          required
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label>Re-type password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password2"
+          [(ngModel)]="form.password2"
+          placeholder="Re-type password"
+          required
+        />
+      </div>
+
+      <div class="form-check mb-3">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="agree"
+          [(ngModel)]="form.agree"
+          id="agreeCheck"
+        />
+        <label class="form-check-label" for="agreeCheck">
+          I agree to the
+          <a href="#" (click)="$event.preventDefault()">Terms of Use</a>
+          and
+          <a href="#" (click)="$event.preventDefault()">Privacy Policy</a>.
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">
+        Sign Up
+      </button>
+
+      <div class="text-center mt-2">
+        <a href="#" (click)="$event.preventDefault()">Learn More</a>
+      </div>
+    </form>
+  </div>
+</div>

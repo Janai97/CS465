@@ -1,0 +1,14 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.add-btn-wrapper {
+  margin-left: auto; /* pushes button all the way right */
+}

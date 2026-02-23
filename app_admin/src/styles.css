@@ -1,0 +1,31 @@
+/* app_admin/src/styles.css */
+
+/* Ensure the app can always receive pointer events */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  pointer-events: auto !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* Angular root should be above any accidental background layer */
+app-root {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* If any overlay/backdrop got stuck, remove it */
+.modal-backdrop,
+.offcanvas-backdrop,
+.page-overlay,
+.screen-overlay,
+.dark-overlay,
+.overlay {
+  display: none !important;
+  pointer-events: none !important;
+}

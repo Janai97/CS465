@@ -1,0 +1,104 @@
+<div class="admin-layout">
+  <!-- LEFT SIDEBAR -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-top">
+      <div class="icon-box">✉</div>
+      <div class="sidebar-title">My Project</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="side-link" (click)="go('travel')">Travel</a>
+      <a class="side-link" (click)="go('reservations')">Reservations</a>
+      <a class="side-link">Users</a>
+      <a class="side-link">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN AREA -->
+  <main class="admin-main">
+    <div class="admin-header">
+      <div class="admin-title">Travlr Getaways | Admin</div>
+      <div class="admin-icons">? 💬 ✉ 👤</div>
+    </div>
+
+    <div class="admin-content">
+      <section class="panel">
+        <div class="panel-legend">
+          <span>Group Name</span>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-grid">
+          <!-- ID -->
+          <div class="row">
+            <label class="lbl">ID:</label>
+            <div class="ctrl">
+              <input class="input" formControlName="code" />
+              <div class="err" *ngIf="submitted && f['code'].errors">Required</div>
+            </div>
+          </div>
+
+          <!-- DESTINATION -->
+          <div class="row">
+            <label class="lbl">Destination:</label>
+            <div class="ctrl">
+              <input class="input" formControlName="name" />
+              <div class="err" *ngIf="submitted && f['name'].errors">Required</div>
+            </div>
+          </div>
+
+          <!-- LENGTH -->
+          <div class="row">
+            <label class="lbl">Length of Stay:</label>
+            <div class="ctrl">
+              <div class="len-row">
+                <input class="input small" type="number" formControlName="nights" />
+                <span class="unit">Nights</span>
+                <input class="input small" type="number" formControlName="days" />
+                <span class="unit">Days</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- START DATE -->
+          <div class="row">
+            <label class="lbl">Start Date:</label>
+            <div class="ctrl">
+              <div class="date-row">
+                <input class="input" type="date" formControlName="start" />
+                <span class="calendar">📅</span>
+              </div>
+              <div class="err" *ngIf="submitted && f['start'].errors">Required</div>
+            </div>
+          </div>
+
+          <!-- RESORT -->
+          <div class="row">
+            <label class="lbl">Resort:</label>
+            <div class="ctrl">
+              <input class="input wide" formControlName="resort" />
+              <div class="err" *ngIf="submitted && f['resort'].errors">Required</div>
+            </div>
+          </div>
+
+          <!-- PER PERSON -->
+          <div class="row">
+            <label class="lbl">Per Person:</label>
+            <div class="ctrl">
+              <input class="input small" formControlName="perPerson" />
+              <div class="err" *ngIf="submitted && f['perPerson'].errors">Required</div>
+            </div>
+          </div>
+
+          <!-- MESSAGES -->
+          <div class="msg ok" *ngIf="message === 'Trip created.'">{{ message }}</div>
+          <div class="msg bad" *ngIf="message && message !== 'Trip created.'">{{ message }}</div>
+
+          <!-- SAVE -->
+          <div class="actions">
+            <button class="save-btn" type="submit">Save</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+</div>

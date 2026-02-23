@@ -2,48 +2,37 @@ const mongoose = require('mongoose');
 require('../models/travlr'); // Register model
 const Model = mongoose.model('trips');
 
-
-// =====================================================
-// GET: /api/trips - lists all the trips
-// =====================================================
+/* GET - LISTS ALL TRIPS */
 const tripsList = async (req, res) => {
   try {
     const trips = await Model.find({}).exec();
 
     if (!trips.length) {
-      return res.status(404).json({ message: "No trips found" });
+      return res.status(404).json({ message: 'No trips found' });
     }
 
     return res.status(200).json(trips);
-
   } catch (err) {
     return res.status(500).json(err);
   }
 };
 
-
-// =====================================================
-// GET: /api/trips/:tripCode - retrieve a single trip
-// =====================================================
+/* GET - SINGLE TRIP */
 const tripsFindByCode = async (req, res) => {
   try {
     const trip = await Model.findOne({ code: req.params.tripCode }).exec();
 
     if (!trip) {
-      return res.status(404).json({ message: "Trip not found" });
+      return res.status(404).json({ message: 'Trip not found' });
     }
 
     return res.status(200).json(trip);
-
   } catch (err) {
     return res.status(500).json(err);
   }
 };
 
-
-// =====================================================
-// POST: /api/trips - create a new trip
-// =====================================================
+/* POST - CREATE NEW TRIP */
 const tripsAddTrip = async (req, res) => {
   try {
     const newTrip = await Model.create({
@@ -54,20 +43,16 @@ const tripsAddTrip = async (req, res) => {
       resort: req.body.resort,
       perPerson: req.body.perPerson,
       image: req.body.image,
-      description: req.body.description
+      description: req.body.description,
     });
 
     return res.status(201).json(newTrip);
-
   } catch (err) {
     return res.status(400).json(err);
   }
 };
 
-
-// =====================================================
-// PUT: /api/trips/:tripCode - update an existing trip
-// =====================================================
+/* PUT - UPDATE EXISTING TRIP */
 const tripsUpdateTrip = async (req, res) => {
   try {
     const updatedTrip = await Model.findOneAndUpdate(
@@ -80,25 +65,25 @@ const tripsUpdateTrip = async (req, res) => {
         resort: req.body.resort,
         perPerson: req.body.perPerson,
         image: req.body.image,
-        description: req.body.description
+        description: req.body.description,
       },
-      { new: true } // return the updated doc
+      {
+        new: true,          // return updated doc
+        runValidators: true // validate against schema
+      }
     ).exec();
 
     if (!updatedTrip) {
-      return res.status(404).json({ message: "Trip not found" });
+      return res.status(404).json({ message: 'Trip not found' });
     }
 
     return res.status(200).json(updatedTrip);
-
   } catch (err) {
     return res.status(400).json(err);
   }
 };
 
-// =====================================================
-// DELETE: /api/trips/:tripCode - delete an existing trip
-// =====================================================
+/* DELETE */
 const tripsDeleteTrip = async (req, res) => {
   try {
     const trip = await Model.findOneAndDelete({ code: req.params.tripCode }).exec();
@@ -107,19 +92,18 @@ const tripsDeleteTrip = async (req, res) => {
       return res.status(404).json({ message: 'Trip not found' });
     }
 
-    return res.status(204).json(null);
+    return res.status(204).send();
   } catch (err) {
     return res.status(500).json(err);
   }
 };
 
-// =====================================================
-// EXPORTS
-// =====================================================
+
+/* EXPORTS */
 module.exports = {
   tripsList,
   tripsFindByCode,
   tripsAddTrip,
   tripsUpdateTrip,
-  tripsDeleteTrip
+  tripsDeleteTrip,
 };

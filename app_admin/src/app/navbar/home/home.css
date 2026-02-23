@@ -1,0 +1,68 @@
+.home-wrap {
+  min-height: calc(100vh - 80px);
+  background: #9a9a9a;
+  padding: 24px;
+}
+
+.tile-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+  margin: 12px 0 48px 0;
+}
+
+.tile {
+  height: 160px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.25);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* overlay for readability */
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.10));
+  pointer-events: none; /* CRITICAL: overlay cannot steal clicks */
+}
+
+/* Images from Angular assets */
+.tile.beach {
+  background-image: url('/assets/images/beach4.jpg');
+}
+.tile.cruise {
+  background-image: url('/assets/images/cruise4.jpg');
+}
+.tile.mountain {
+  background-image: url('/assets/images/mountain4.jpg');
+}
+
+.tile-label {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 800;
+  z-index: 1; /* above overlay */
+}
+
+.hero-text h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  color: #fff;
+}
+
+.hero-text p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #fff;
+  opacity: 0.95;
+}

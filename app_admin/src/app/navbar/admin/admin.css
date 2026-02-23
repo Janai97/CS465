@@ -1,0 +1,198 @@
+/* Layout */
+.admin-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr; /* slightly wider like wireframe */
+  min-height: 75vh;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  background: #2f7dd1;
+  color: #fff;
+  padding: 18px 16px;
+}
+
+.sidebar-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.icon-box {
+  width: 54px;
+  height: 54px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 1.2rem;
+}
+
+.sidebar-title {
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.side-link {
+  color: #eaf3ff;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Main */
+.admin-main {
+  background: #efefef;
+  padding: 0;
+}
+
+.admin-header {
+  background: #2f7dd1;
+  color: #fff;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-title {
+  font-weight: 700;
+}
+
+.admin-icons {
+  opacity: 0.9;
+  letter-spacing: 2px;
+}
+
+.admin-content {
+  padding: 28px;
+  display: flex;
+  justify-content: center; /* center the panel */
+}
+
+/* Panel (big white box like wireframe) */
+.panel {
+  width: min(720px, 100%);
+  background: #fff;
+  border: 2px solid #222;
+  padding: 26px 26px 22px;
+  position: relative;
+}
+
+/* "Group Name" legend like fieldset */
+.panel-legend {
+  position: absolute;
+  top: -12px;
+  left: 18px;
+  background: #fff;
+  padding: 0 10px;
+  font-weight: 800;
+}
+
+/* Form rows: label left, input right */
+.form-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.lbl {
+  font-weight: 700;
+  text-align: right; /* wireframe aligns labels */
+}
+
+/* Controls */
+.ctrl {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input {
+  border: 2px solid #222;
+  height: 34px;
+  padding: 6px 8px;
+  width: 360px;
+  max-width: 100%;
+  background: #fff;
+}
+
+.input.wide {
+  width: 420px;
+}
+
+.input.small {
+  width: 90px;
+}
+
+.len-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.unit {
+  font-weight: 600;
+  color: #222;
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.calendar {
+  font-size: 1.3rem;
+}
+
+/* Messages */
+.err {
+  color: #b00020;
+  font-size: 0.85rem;
+}
+
+.msg {
+  margin-top: 6px;
+  font-weight: 700;
+}
+
+.msg.ok {
+  color: #0a7a2f;
+}
+
+.msg.bad {
+  color: #b00020;
+}
+
+/* Save button area */
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.save-btn {
+  border: 2px solid #222;
+  background: #fff;
+  padding: 10px 22px;
+  font-weight: 800;
+  cursor: pointer;
+}

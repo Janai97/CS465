@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{title}}</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <nav class="tg-nav">
+    <div class="tg-nav-inner">
+      <a class="tg-logo" href="/">
+        <div class="logo-box"><span class="logo-x">X</span></div>
+        <div class="logo-text">Corp Logo</div>
+      </a>
+
+      <div class="tg-links">
+        <a href="/travel">Travel</a>
+        <a href="/news">News</a>
+
+        {{#if user}}
+          <a href="/reservations">Reservations</a>
+        {{else}}
+          <span class="logged-note">Reservations (Logged In Only)</span>
+        {{/if}}
+
+        <a href="/admin">Admin</a>
+
+        <span class="divider"></span>
+
+        <a href="/checkout" class="with-icon"><span class="icon">🛒</span> Checkout</a>
+        <a href="/login" class="with-icon"><span class="icon">👤</span> Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tg-page">
     {{{body}}}
-  </body>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

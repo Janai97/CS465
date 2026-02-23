@@ -1,32 +1,154 @@
 [
   {
-    "code": "GALR21014",
-    "name": "Gale Reef",
+    "code": "B0101",
+    "name": "Cancun",
     "length": "4 nights / 5 days",
     "start": "2021-02-14T08:00:00Z",
-    "resort": "Emerald Bay, 3 stars",
+    "resort": "Emerald Bay, 3-stars",
     "perPerson": "799.00",
-    "image": "reef1.jpg",
-    "description": "<p>Gale Reef Sed et augue lorem. In sit amet placerat arcu. Mauris volutpat ipsum ac justo mollis vel vestibulum orci gravida. Vestibulum sit amet porttitor odio. Nulla facilisi. Fusce at pretium felis.</p><p>Sed consequat libero ut turpis venenatis ut aliquam risus semper. Etiam convallis mi vel risus pretium sodales. Etiam nunc lorem ullamcorper vitae laoreet.</p>"
+    "image": "beach1.jpg",
+    "description": "<p>Sunny beaches, turquoise water, and a perfect quick getaway.</p>"
   },
   {
-    "code": "DAWR21015",
-    "name": "Dawson's Reef",
+    "code": "B0103",
+    "name": "Barbados",
+    "length": "5 nights / 6 days",
+    "start": "2021-02-28T08:00:00Z",
+    "resort": "Castaway Cove, 4-stars",
+    "perPerson": "1299.00",
+    "image": "beach2.jpg",
+    "description": "<p>Relax on white-sand beaches and explore local island culture.</p>"
+  },
+  {
+    "code": "B0401",
+    "name": "Panama City",
     "length": "4 nights / 5 days",
-    "start": "2021-03-15T08:00:00Z",
-    "resort": "Blue Lagoon, 4 stars",
+    "start": "2021-03-21T08:00:00Z",
+    "resort": "Sunseeker Surf, 4-stars",
     "perPerson": "1199.00",
-    "image": "reef2.jpg",
-    "description": "<p>Dawson's Reef Integer magna leo, posuere et dignissim vitae, porttitor at odio. Pellentesque a metus nec magna placerat volutpat. Nunc nisi mi, elementum sit amet aliquet quis, tristique quis nisl. Curabitur odio lacus, blandit ut hendrerit.</p><p>Vulputate, vulputate at est. Morbi aliquet viverra metus eu consectetur. In lorem dui, elementum sit amet convallis ac, tincidunt vel sapien.</p>"
+    "image": "beach3.jpg",
+    "description": "<p>Beachfront resort stay with vibrant nightlife and coastal views.</p>"
   },
   {
-    "code": "CLAR21062",
-    "name": "Claire's Reef",
+    "code": "B0701",
+    "name": "Tahiti",
+    "length": "6 nights / 7 days",
+    "start": "2021-03-28T08:00:00Z",
+    "resort": "Hedonist Heaven, 5-stars",
+    "perPerson": "1799.00",
+    "image": "beach4.jpg",
+    "description": "<p>Overwater bungalow vibes and unforgettable island scenery.</p>"
+  },
+  {
+    "code": "B0901",
+    "name": "French Riviera",
+    "length": "5 nights / 6 days",
+    "start": "2021-04-11T08:00:00Z",
+    "resort": "Chateau Royal, 5-stars",
+    "perPerson": "2499.00",
+    "image": "beach5.jpg",
+    "description": "<p>Luxury coastal escape with iconic views and premium amenities.</p>"
+  },
+
+  {
+    "code": "C0101",
+    "name": "Caribbean Cruise",
     "length": "4 nights / 5 days",
-    "start": "2021-06-21T08:00:00Z",
-    "resort": "Coral Sands, 5 stars",
-    "perPerson": "1999.00",
-    "image": "reef3.jpg",
-    "description": "<p>Claire's Reef Donec sed felis risus. Nulla facilisi. Donec a orci tellus, et auctor odio. Fusce ac orci nibh, quis semper arcu. Cras orci neque, euismod et accumsan ac, sagittis molestie lorem. Proin odio sapien, elementum at tempor non.</p><p>Vulputate eget libero. In hac habitasse platea dictumst. Integer purus justo, egestas eu consectetur eu, cursus in tortor. Quisque nec nunc ac mi ultrices iaculis.</p>"
+    "start": "2021-02-21T08:00:00Z",
+    "resort": "Sea Breeze Line, 4-stars",
+    "perPerson": "1099.00",
+    "image": "cruise1.jpg",
+    "description": "<p>Island-hopping cruise with onboard dining and entertainment.</p>"
+  },
+  {
+    "code": "C0201",
+    "name": "Bahamas Cruise",
+    "length": "5 nights / 6 days",
+    "start": "2021-03-07T08:00:00Z",
+    "resort": "Ocean Crown Line, 4-stars",
+    "perPerson": "1399.00",
+    "image": "cruise2.jpg",
+    "description": "<p>Classic Bahamas itinerary with beach excursions and port shopping.</p>"
+  },
+  {
+    "code": "C0401",
+    "name": "Mediterranean Cruise",
+    "length": "6 nights / 7 days",
+    "start": "2021-03-14T08:00:00Z",
+    "resort": "Voyager Line, 5-stars",
+    "perPerson": "2099.00",
+    "image": "cruise3.jpg",
+    "description": "<p>European ports, historic sights, and a premium onboard experience.</p>"
+  },
+  {
+    "code": "C0601",
+    "name": "Alaskan Cruise",
+    "length": "6 nights / 7 days",
+    "start": "2021-04-04T08:00:00Z",
+    "resort": "Glacier Passage, 5-stars",
+    "perPerson": "2299.00",
+    "image": "cruise4.jpg",
+    "description": "<p>Glaciers, wildlife, and breathtaking northern scenery.</p>"
+  },
+
+  {
+    "code": "M0101",
+    "name": "Aspen",
+    "length": "4 nights / 5 days",
+    "start": "2021-02-18T08:00:00Z",
+    "resort": "Summit Lodge, 4-stars",
+    "perPerson": "1599.00",
+    "image": "mountain1.jpg",
+    "description": "<p>Mountain luxury with slopeside views and winter adventure.</p>"
+  },
+  {
+    "code": "M0201",
+    "name": "Lake Tahoe",
+    "length": "5 nights / 6 days",
+    "start": "2021-02-25T08:00:00Z",
+    "resort": "Pinecrest Resort, 4-stars",
+    "perPerson": "1499.00",
+    "image": "mountain2.jpg",
+    "description": "<p>Snowy peaks, lake views, and cozy cabin-style comfort.</p>"
+  },
+  {
+    "code": "M0301",
+    "name": "Banff",
+    "length": "6 nights / 7 days",
+    "start": "2021-03-04T08:00:00Z",
+    "resort": "Alpine Ridge, 5-stars",
+    "perPerson": "1899.00",
+    "image": "mountain3.jpg",
+    "description": "<p>National park scenery with guided tours and scenic hikes.</p>"
+  },
+  {
+    "code": "M0401",
+    "name": "Park City",
+    "length": "4 nights / 5 days",
+    "start": "2021-03-11T08:00:00Z",
+    "resort": "Wasatch Retreat, 4-stars",
+    "perPerson": "1399.00",
+    "image": "mountain4.jpg",
+    "description": "<p>Popular ski town escape with dining, shopping, and trails.</p>"
+  },
+  {
+    "code": "M0501",
+    "name": "Swiss Alps",
+    "length": "6 nights / 7 days",
+    "start": "2021-03-25T08:00:00Z",
+    "resort": "Glacier View Chalet, 5-stars",
+    "perPerson": "2699.00",
+    "image": "mountain5.jpg",
+    "description": "<p>Iconic alpine experience with breathtaking peaks and luxury stays.</p>"
+  },
+  {
+    "code": "M0601",
+    "name": "Rocky Mountains",
+    "length": "5 nights / 6 days",
+    "start": "2021-04-08T08:00:00Z",
+    "resort": "Timberline Lodge, 4-stars",
+    "perPerson": "1299.00",
+    "image": "mountain6.jpg",
+    "description": "<p>Fresh mountain air, scenic drives, and outdoor adventure.</p>"
   }
 ]

@@ -1,17 +1,63 @@
-<div id="header">
-  <div id="logo">
-    <a href="/"><img src="/images/logo.png" alt="LOGO" height="100" width="200"></a>
-  </div>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{title}}</title>
 
-  <div id="navigation">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li class="selected"><a href="/travel">Travel</a></li>
-      <li><a href="/rooms">Rooms</a></li>
-      <li><a href="/meals">Meals</a></li>
-      <li><a href="/news">News</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/contact">Contact</a></li>
-    </ul>
-  </div>
-</div>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <nav class="tg-nav">
+    <div class="tg-nav-inner">
+
+      <!-- LEFT SIDE -->
+      <div class="nav-left">
+
+        <!-- Logo (image) -->
+        <a class="tg-logo" href="/">
+          <img src="/images/logo.png" alt="Travlr Getaways Logo" class="corp-logo" />
+        </a>
+
+        <a href="/travel" class="nav-btn">Travel</a>
+        <a href="/news" class="nav-btn">News</a>
+
+        {{#if user}}
+          <a href="/reservations" class="nav-btn">Reservations</a>
+        {{else}}
+          <span class="nav-btn disabled">Reservations</span>
+        {{/if}}
+
+        {{#if isAdmin}}
+          <a href="/admin" class="nav-btn">Admin</a>
+        {{/if}}
+
+        <a href="/checkout" class="nav-btn">
+          Checkout
+          {{#if cartCount}}
+            <span class="cart-badge">{{cartCount}}</span>
+          {{/if}}
+        </a>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="nav-right">
+        {{#if user}}
+          <span class="hello">Hi, {{user.name}}</span>
+          <a href="/logout" class="nav-btn">Logout</a>
+        {{else}}
+          <a href="/login" class="nav-btn">Login</a>
+          <a href="/register" class="nav-btn primary">Sign Up</a>
+        {{/if}}
+      </div>
+
+    </div>
+  </nav>
+
+  <main class="tg-page">

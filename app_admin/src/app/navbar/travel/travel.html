@@ -1,0 +1,78 @@
+<h1 class="page-title">Travel</h1>
+
+<div class="subhead-row">
+  <h4 class="mb-0">Editable List of Stuff</h4>
+  <a class="back-link" (click)="backToHome()">&lt; Back to Previous Page</a>
+</div>
+
+<div class="top-row">
+  <div class="tabs">
+    <button class="tab" [class.active]="selectedTab === 'Beaches'" (click)="selectTab('Beaches')">
+      Beaches ({{ beachesCount }})
+    </button>
+    <button class="tab" [class.active]="selectedTab === 'Cruises'" (click)="selectTab('Cruises')">
+      Cruises ({{ cruisesCount }})
+    </button>
+    <button class="tab" [class.active]="selectedTab === 'Mountains'" (click)="selectTab('Mountains')">
+      Mountains ({{ mountainsCount }})
+    </button>
+  </div>
+
+  <div class="right-tools">
+    <div class="search">
+      <span class="search-icon">🔍</span>
+      <input
+        class="search-input"
+        placeholder="search travel"
+        [(ngModel)]="searchText"
+        (ngModelChange)="onSearchChange()"
+      />
+      <button class="clear-btn" type="button" (click)="clearSearch()">Clear</button>
+    </div>
+
+    <button class="add-btn" *ngIf="isLoggedIn()" (click)="addTrip()">Add a Trip</button>
+  </div>
+</div>
+
+<table class="trip-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Length</th>
+      <th>Start</th>
+      <th>Resort</th>
+      <th>Per Person</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let trip of pagedRows">
+      <td class="mono">{{ trip.code }}</td>
+      <td>{{ trip.name }}</td>
+      <td>{{ trip.length }}</td>
+      <td>{{ formatStart(trip.start) }}</td>
+      <td>{{ trip.resort }}</td>
+      <td>{{ trip.perPerson | currency:'USD':'symbol' }}</td>
+
+      <td class="actions">
+        <a *ngIf="isLoggedIn()" (click)="editTrip(trip.code)">Edit</a>
+      </td>
+
+      <td class="actions">
+        <button *ngIf="isLoggedIn()" class="x-btn" (click)="deleteTrip(trip.code)">×</button>
+      </td>
+    </tr>
+
+    <tr *ngIf="pagedRows.length === 0">
+      <td colspan="8" class="empty">No trips found.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="pager">
+  <a (click)="prevPage()">previous</a>
+  <a (click)="nextPage()">next</a>
+</div>

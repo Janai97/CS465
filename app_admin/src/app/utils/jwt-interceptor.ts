@@ -1,35 +1,37 @@
 import { Injectable, Provider } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor,
+  HTTP_INTERCEPTORS
+} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../services/authentication';
+
+import { Authentication } from '../services/authentication';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(private authenticationService: Authentication) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let isAuthAPI: boolean;
-
-    // console.log('Interceptor::URL' + request.url);
-
-    if (request.url.startsWith('login') || request.url.startsWith('register')) {
-      isAuthAPI = true;
-    } else {
-      isAuthAPI = false;
-    }
+    // Don’t attach token to auth endpoints
+    const cleanUrl = request.url.split('?')[0];
+    const isAuthAPI =
+      cleanUrl.endsWith('/api/login') ||
+      cleanUrl.endsWith('/api/register');
 
     if (this.authenticationService.isLoggedIn() && !isAuthAPI) {
       const token = this.authenticationService.getToken();
-      // console.log(token);
 
-      const authReq = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-
-      return next.handle(authReq);
+      if (token) {
+        const authReq = request.clone({
+          setHeaders: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        return next.handle(authReq);
+      }
     }
 
     return next.handle(request);
@@ -39,5 +41,5 @@ export class JwtInterceptor implements HttpInterceptor {
 export const authInterceptProvider: Provider = {
   provide: HTTP_INTERCEPTORS,
   useClass: JwtInterceptor,
-  multi: true
+  multi: true,
 };

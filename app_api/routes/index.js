@@ -11,7 +11,7 @@ function authenticateJWT(req, res, next) {
   const authHeader = req.headers['authorization'];
 
   if (authHeader == null) {
-    console.log('Auth Header Required but NOT PRESENT!');
+    console.log('Auth Header Required but NOT PRESENT');
     return res.sendStatus(401);
   }
 
@@ -29,7 +29,7 @@ function authenticateJWT(req, res, next) {
 
   jwt.verify(token, process.env.JWT_SECRET, (err, verified) => {
     if (err) {
-      return res.status(401).json('Token Validation Error!');
+      return res.status(401).json('Token Validation Error');
     }
     req.auth = verified;
     next();
@@ -47,6 +47,7 @@ router.route('/trips')
 
 router.route('/trips/:tripCode')
   .get(tripsController.tripsFindByCode)
-  .put(authenticateJWT, tripsController.tripsUpdateTrip);
+  .put(authenticateJWT, tripsController.tripsUpdateTrip)
+  .delete(authenticateJWT, tripsController.tripsDeleteTrip);
 
 module.exports = router;

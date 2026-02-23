@@ -1,0 +1,13 @@
+{{> header}}
+
+<div class="container py-4">
+  <h1>Reservations</h1>
+
+  {{#if user}}
+    <p>Welcome, {{user.name}}. Your itineraries will appear here.</p>
+  {{else}}
+    <div class="alert alert-warning">You must be logged in to view reservations.</div>
+  {{/if}}
+</div>
+
+{{> footer}}

@@ -1,0 +1,14 @@
+{{> header}}
+
+<div class="container py-4">
+  <h1>Admin</h1>
+
+  {{#if message}}
+    <div class="alert alert-danger">{{message}}</div>
+  {{else}}
+    <div class="alert alert-success">Admin access confirmed.</div>
+    <p class="text-muted">Trip management is handled via the Angular SPA on localhost:4200.</p>
+  {{/if}}
+</div>
+
+{{> footer}}

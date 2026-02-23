@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const User = require('../models/user');
 const passport = require('passport');
 
@@ -15,7 +14,6 @@ const register = async (req, res) => {
     });
 
     user.setPassword(req.body.password);
-
     await user.save();
 
     const token = user.generateJWT();
@@ -47,5 +45,5 @@ const login = (req, res) => {
 
 module.exports = {
   register,
-  login
+  login,
 };

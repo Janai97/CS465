@@ -1,121 +1,146 @@
-<div class="col-md-4">
-  <h2 class="text-center">Edit Trip</h2>
-
-  <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()">
-
-    <!-- CODE -->
-    <div class="form-group">
-      <label>Code:</label>
-      <input
-        type="text"
-        formControlName="code"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['code'].errors }"
-      >
-      <div *ngIf="submitted && f['code'].errors">
-        <div *ngIf="f['code'].errors['required']">Trip Code is required</div>
-      </div>
+<div class="trip-page">
+  <section class="panel">
+    <div class="panel-legend">
+      <span>Edit Trip</span>
     </div>
 
-    <!-- NAME -->
-    <div class="form-group">
-      <label>Name:</label>
-      <input
-        type="text"
-        formControlName="name"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
-      >
-      <div *ngIf="submitted && f['name'].errors">
-        <div *ngIf="f['name'].errors['required']">Name is required</div>
+    <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()" class="form-grid">
+
+      <!-- CODE -->
+      <div class="row">
+        <label class="lbl">Code:</label>
+        <div class="ctrl">
+          <input
+            type="text"
+            formControlName="code"
+            class="input"
+            [ngClass]="{ 'invalid': submitted && f['code'].errors }"
+          />
+          <div class="err" *ngIf="submitted && f['code'].errors">
+            Trip Code is required
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- LENGTH -->
-    <div class="form-group">
-      <label>Length:</label>
-      <input
-        type="text"
-        formControlName="length"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['length'].errors }"
-      >
-      <div *ngIf="submitted && f['length'].errors">
-        <div *ngIf="f['length'].errors['required']">Length is required</div>
+      <!-- NAME -->
+      <div class="row">
+        <label class="lbl">Name:</label>
+        <div class="ctrl">
+          <input
+            type="text"
+            formControlName="name"
+            class="input"
+            [ngClass]="{ 'invalid': submitted && f['name'].errors }"
+          />
+          <div class="err" *ngIf="submitted && f['name'].errors">
+            Name is required
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- START -->
-    <div class="form-group">
-      <label>Start:</label>
-      <input
-        type="date"
-        formControlName="start"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['start'].errors }"
-      >
-      <div *ngIf="submitted && f['start'].errors">
-        <div *ngIf="f['start'].errors['required']">Date is required</div>
+      <!-- LENGTH -->
+      <div class="row">
+        <label class="lbl">Length:</label>
+        <div class="ctrl">
+          <input
+            type="text"
+            formControlName="length"
+            class="input"
+            [ngClass]="{ 'invalid': submitted && f['length'].errors }"
+          />
+          <div class="err" *ngIf="submitted && f['length'].errors">
+            Length is required
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- RESORT -->
-    <div class="form-group">
-      <label>Resort:</label>
-      <input
-        type="text"
-        formControlName="resort"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['resort'].errors }"
-      >
-      <div *ngIf="submitted && f['resort'].errors">
-        <div *ngIf="f['resort'].errors['required']">Resort is required</div>
+      <!-- START -->
+      <div class="row">
+        <label class="lbl">Start:</label>
+        <div class="ctrl">
+          <div class="date-row">
+            <input
+              type="date"
+              formControlName="start"
+              class="input"
+              [ngClass]="{ 'invalid': submitted && f['start'].errors }"
+            />
+            <span class="calendar">📅</span>
+          </div>
+          <div class="err" *ngIf="submitted && f['start'].errors">
+            Date is required
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- PER PERSON -->
-    <div class="form-group">
-      <label>Per Person:</label>
-      <input
-        type="text"
-        formControlName="perPerson"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['perPerson'].errors }"
-      >
-      <div *ngIf="submitted && f['perPerson'].errors">
-        <div *ngIf="f['perPerson'].errors['required']">Per Person is required</div>
+      <!-- RESORT -->
+      <div class="row">
+        <label class="lbl">Resort:</label>
+        <div class="ctrl">
+          <input
+            type="text"
+            formControlName="resort"
+            class="input wide"
+            [ngClass]="{ 'invalid': submitted && f['resort'].errors }"
+          />
+          <div class="err" *ngIf="submitted && f['resort'].errors">
+            Resort is required
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- IMAGE -->
-    <div class="form-group">
-      <label>Image Name:</label>
-      <input
-        type="text"
-        formControlName="image"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['image'].errors }"
-      >
-      <div *ngIf="submitted && f['image'].errors">
-        <div *ngIf="f['image'].errors['required']">Image Name is required</div>
+      <!-- PER PERSON -->
+      <div class="row">
+        <label class="lbl">Per Person:</label>
+        <div class="ctrl">
+          <input
+            type="text"
+            formControlName="perPerson"
+            class="input small"
+            [ngClass]="{ 'invalid': submitted && f['perPerson'].errors }"
+          />
+          <div class="err" *ngIf="submitted && f['perPerson'].errors">
+            Per Person is required
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- DESCRIPTION -->
-    <div class="form-group">
-      <label>Description:</label>
-      <input
-        type="text"
-        formControlName="description"
-        class="form-control"
-        [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
-      >
-      <div *ngIf="submitted && f['description'].errors">
-        <div *ngIf="f['description'].errors['required']">Description is required</div>
+      <!-- IMAGE -->
+      <div class="row">
+        <label class="lbl">Image Name:</label>
+        <div class="ctrl">
+          <input
+            type="text"
+            formControlName="image"
+            class="input"
+            [ngClass]="{ 'invalid': submitted && f['image'].errors }"
+          />
+          <div class="err" *ngIf="submitted && f['image'].errors">
+            Image Name is required
+          </div>
+        </div>
       </div>
-    </div>
 
-    <button type="submit" class="btn btn-info mt-2">Save</button>
+      <!-- DESCRIPTION -->
+      <div class="row">
+        <label class="lbl">Description:</label>
+        <div class="ctrl">
+          <input
+            type="text"
+            formControlName="description"
+            class="input wide"
+            [ngClass]="{ 'invalid': submitted && f['description'].errors }"
+          />
+          <div class="err" *ngIf="submitted && f['description'].errors">
+            Description is required
+          </div>
+        </div>
+      </div>
 
-  </form>
+      <!-- Save -->
+      <div class="actions">
+        <button type="submit" class="save-btn">Save</button>
+      </div>
+    </form>
+  </section>
 </div>

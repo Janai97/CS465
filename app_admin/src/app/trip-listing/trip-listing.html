@@ -1,12 +1,50 @@
-<!-- SHOW ADD BUTTON ONLY IF LOGGED IN -->
-<div *ngIf="isLoggedIn()" class="mb-3">
-  <button (click)="addTrip()" class="btn btn-info">
-    Add Trip
-  </button>
+<!-- Top Bar -->
+<div class="top-bar">
+
+  <!-- Left Side: Category Tabs -->
+  <div class="tabs">
+    <button
+      class="btn"
+      [class.btn-primary]="activeCategory === 'beaches'"
+      [class.btn-outline-primary]="activeCategory !== 'beaches'"
+      (click)="setCategory('beaches')"
+    >
+      Beaches ({{ beachesCount }})
+    </button>
+
+    <button
+      class="btn"
+      [class.btn-primary]="activeCategory === 'cruises'"
+      [class.btn-outline-primary]="activeCategory !== 'cruises'"
+      (click)="setCategory('cruises')"
+    >
+      Cruises ({{ cruisesCount }})
+    </button>
+
+    <button
+      class="btn"
+      [class.btn-primary]="activeCategory === 'mountains'"
+      [class.btn-outline-primary]="activeCategory !== 'mountains'"
+      (click)="setCategory('mountains')"
+    >
+      Mountains ({{ mountainsCount }})
+    </button>
+  </div>
+
+  <!-- Right Side: Add Trip -->
+  <div *ngIf="isLoggedIn()" class="add-btn-wrapper">
+    <button (click)="addTrip()" class="btn btn-info">
+      Add Trip
+    </button>
+  </div>
+
 </div>
 
+<div class="text-muted mb-2">{{ message }}</div>
+
+<!-- Trip Grid -->
 <div class="row">
-  <div *ngFor="let trip of trips" class="col-3">
+  <div *ngFor="let trip of filteredTrips" class="col-3">
     <app-trip-card [trip]="trip" class="card-deck mt-2"></app-trip-card>
   </div>
 </div>
